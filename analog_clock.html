@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 10rem;
+            height: 10rem;
+            background: url(./Images/clock.png);
+            background-size: 100%;
+            margin: auto;
+            position: relative;
+        }
+
+        #hour,
+        #minutes,
+        #second {
+            position: absolute;
+            width: .2rem;
+            height: 3rem;
+            background-color: black;
+            border-radius: .2rem;
+            top: 20%;
+            left: 49%;
+            transform-origin: bottom;
+        }
+
+        #hour {
+            background-color: rgb(15, 62, 203);
+        }
+
+        #minutes {
+            height: 3.5rem;
+            top: 16%;
+            left: 49%;
+        }
+
+        #second {
+            height: 3.8rem;
+            background-color: red;
+            top: 13%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="hour"></div>
+        <div id="minutes"></div>
+        <div id="second"></div>
+    </div>
+
+    <script>
+        setInterval(() => {
+            let d = new Date();
+
+            hour = d.getHours();
+            min = d.getMinutes();
+            sec = d.getSeconds();
+
+            hour = hour * 30 + min / 2;
+
+            min = min * 6;
+
+            sec = sec * 6;
+
+            document.getElementById("hour").style.transform = `rotate(${hour}deg)`;
+
+            document.getElementById("minutes").style.transform = `rotate(${min}deg)`;
+
+            document.getElementById("second").style.transform = `rotate(${sec}deg)`;
+        }, 1000)
+    </script>
+</body>
+
+</html>
